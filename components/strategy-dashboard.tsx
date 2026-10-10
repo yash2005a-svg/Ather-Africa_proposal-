@@ -1365,7 +1365,7 @@ function LiveDashboardPlan() {
         <div className="architecture-security"><b>Security boundary:</b> this proposal is in a public repository. A production dashboard with Ather data should be moved to an approved private repository / organization and environment before connecting any confidential, personal or telemetry data. Do not place secrets or customer data in Git or public client-side JSON.</div>
       </Card>
       <Card className="live-timeline-card">
-        <div className="card-heading-row"><div><span className="eyebrow">Indicative timing</span><h3>One–two week prototype plan</h3></div><Confidence level="assumption" formula="An aggressive estimate for one developer and a tightly scoped prototype, provided access, example files, owner decisions, Vercel access and security approval are ready on day one. Not a commitment to multiple automated live integrations or production hardening." /></div>
+        <div className="card-heading-row"><div><span className="eyebrow">Indicative timing</span><h3>One–two week prototype plan</h3></div><DataTag level="assumption" formula="An aggressive estimate for one developer and a tightly scoped prototype, provided access, example files, owner decisions, Vercel access and security approval are ready on day one. Not a commitment to multiple automated live integrations or production hardening." /></div>
         <div className="live-timeline">
           {phases.map((phase) => (
             <article key={phase.stage} className="live-timeline-step">
@@ -1375,13 +1375,13 @@ function LiveDashboardPlan() {
             </article>
           ))}
         </div>
-        <div className="timeline-total"><span>Target prototype</span><strong>~5–10 working days</strong><Confidence level="assumption" formula="One developer, one initial market, simple existing data files, and no procurement delay. Automated external feeds, enterprise authentication, security review and production-grade monitoring are explicitly out of this timebox." /></div>
+        <div className="timeline-total"><span>Target prototype</span><strong>~5–10 working days</strong><DataTag level="assumption" formula="One developer, one initial market, simple existing data files, and no procurement delay. Automated external feeds, enterprise authentication, security review and production-grade monitoring are explicitly out of this timebox." /></div>
         <div className="token-plan">
           <div><span className="eyebrow">AI usage · estimate, not a quote</span><h4>Tokens depend on the model and workflow.</h4></div>
           <p><b>Prototype build allowance:</b> roughly 1–3 million input tokens and 100,000–300,000 output tokens across AI-assisted coding / review is a planning assumption, not a guaranteed bill or a measured usage result.</p>
           <p><b>API cost formula:</b> (input tokens ÷ 1,000,000 × the chosen model’s input rate) + (output tokens ÷ 1,000,000 × its output rate), plus any tool charges. Check current provider rates and measure actual usage; a Copilot subscription may be billed differently from API tokens.</p>
           <p><b>Dashboard runtime:</b> no AI tokens are needed for the MVP as scoped. AI-generated commentary is optional and would add ongoing token cost; ordinary data refresh, hosting and any licensed feeds have separate costs.</p>
-          <Confidence level="assumption" formula="Illustrative token envelope for an AI-assisted build; actual consumption depends on context size, model, retries and code review. It is not the token cost of using this dashboard." />
+          <DataTag level="assumption" formula="Illustrative token envelope for an AI-assisted build; actual consumption depends on context size, model, retries and code review. It is not the token cost of using this dashboard." />
         </div>
       </Card>
       <Card className="live-limitations-card">
