@@ -1,0 +1,256 @@
+{
+  "reportDate": "2026-10-10",
+  "modelYear": 2030,
+  "countryRankingWeights": {
+    "market": 4,
+    "eshare": 3,
+    "policy": 3,
+    "competition": 2,
+    "price": 4,
+    "fx": 2,
+    "entry": 3
+  },
+  "headline": {
+    "annualBaseRevenueUSD": { "low": 3000000, "high": 4000000, "confidence": "assumption" },
+    "marketUnits2025": { "value": 70000, "confidence": "sourced", "sources": ["S1", "S2"], "note": "e2W sold across Africa in 2025" },
+    "marketUnits2020UpperBound": { "value": 1000, "confidence": "sourced", "sources": ["S1", "S2"], "note": "e2W sales were below this annual threshold" },
+    "motorcyclesUnits2024": { "value": 2200000, "confidence": "sourced", "sources": ["S4"], "note": "Motorcycles and scooters sold in 2024" },
+    "atherCapacityAnnual": { "value": 420000, "confidence": "sourced", "sources": ["S30"], "note": "Hosur capacity" },
+    "atherCapacityWithFactory3Annual": { "value": 1420000, "confidence": "sourced", "sources": ["S30"], "note": "Potential capacity with Factory 3.0" },
+    "baseSom2030": { "value": 2500, "confidence": "derived", "sources": ["S5"], "formula": "2.3M × 15% × 12% × 6% = 2,484, rounded to ~2,500" },
+    "somScenarios": [
+      { "name": "Conservative", "value": 1000 },
+      { "name": "Base case", "value": 2500 },
+      { "name": "Aggressive", "value": 7000 }
+    ],
+    "market2030": { "value": 2300000, "confidence": "sourced", "sources": ["S5"] },
+    "mix2030": { "eShare": 0.15, "fitShare": 0.12, "atherShare": 0.06 },
+    "atherShareOfSamRange": { "low": 0.05, "high": 0.1 }
+  },
+  "countries": [
+    {
+      "name": "Kenya", "iso": "KEN", "mapId": "404", "region": "East Africa", "verdict": "Pilot market",
+      "tam": { "low": 69000, "base": 170000, "high": 443000, "confidence": "derived", "sources": ["S1", "S3", "S4"], "whyRange": "Low is the 2024 registration count; base is 25,277 e-units ÷ an estimated 15% e-share (~168,500, rounded); high is trade-data consumption. These use different market definitions." },
+      "e2wToday": { "value": 25277, "confidence": "sourced", "sources": ["S8"] },
+      "eShare2024": { "value": 0.071, "confidence": "sourced", "sources": ["S3"] },
+      "eShare2030": 0.35, "fitShare": 0.15, "atherShare": 0.1, "som2030": 900, "somConfidence": "derived",
+      "policy": "Finance Act 2026 retains zero-rating for electric motorcycles and Li-ion batteries; local-content provisions in the National e-Mobility Policy. Spiro reports over 15,000 Kenyan bikes, about 60% of the measured e2W market.", "policyConfidence": "sourced", "policySources": ["S8", "S9", "S16", "S17", "S18"],
+      "scores": { "market": 5, "eshare": 5, "policy": 4, "competition": 2, "price": 3, "fx": 4, "entry": 5 },
+      "sources": ["S1", "S3", "S8", "S9", "S16", "S17", "S18"]
+    },
+    {
+      "name": "Uganda", "iso": "UGA", "mapId": "800", "region": "East Africa", "verdict": "Expansion market",
+      "tam": { "low": 150000, "base": 150000, "high": 204000, "confidence": "derived", "sources": ["S2", "S4", "S6"], "whyRange": "Base is inferred from 30,000+ e2W at roughly one fifth of motorcycle sales; the high estimate uses trade data." },
+      "e2wToday": { "value": 30000, "confidence": "sourced", "sources": ["S2", "S6"] },
+      "eShare2030": 0.4, "fitShare": 0.1, "atherShare": 0.0917, "som2030": 550, "somConfidence": "derived",
+      "policy": "Established e-motorcycle activity; 134 swap stations serve roughly 950 compatible vehicles.", "policyConfidence": "sourced", "policySources": ["S2"],
+      "scores": { "market": 3, "eshare": 5, "policy": 4, "competition": 2, "price": 3, "fx": 3, "entry": 3 },
+      "sources": ["S2", "S4", "S6"]
+    },
+    {
+      "name": "Rwanda", "iso": "RWA", "mapId": "646", "region": "East Africa", "verdict": "Small test only",
+      "tam": { "low": null, "base": null, "high": null, "confidence": "assumption", "sources": [], "whyRange": "No comparable market-size data found; validate registration and fleet data before sizing." },
+      "e2wToday": { "value": null, "confidence": "assumption", "sources": [] },
+      "eShare2030": null, "fitShare": null, "atherShare": null, "som2030": 100, "somConfidence": "assumption",
+      "policy": "Foreign electric two-wheelers reportedly exempt from import taxes; more than 100 swap stations serve about 4,000 compatible vehicles.", "policyConfidence": "sourced", "policySources": ["S2", "S22"],
+      "scores": { "market": 2, "eshare": 3, "policy": 5, "competition": 2, "price": 3, "fx": 3, "entry": 3 },
+      "sources": ["S2", "S22"]
+    },
+    {
+      "name": "Tanzania", "iso": "TZA", "mapId": "834", "region": "East Africa", "verdict": "Watch / expand",
+      "tam": { "low": 108000, "base": 108000, "high": 108000, "confidence": "sourced", "sources": ["S4"], "whyRange": "Imports are used as a market proxy; registrations and domestic production should be verified." },
+      "e2wToday": { "value": null, "confidence": "assumption", "sources": [] },
+      "eShare2030": 0.1, "fitShare": 0.12, "atherShare": 0.0772, "som2030": 100, "somConfidence": "derived",
+      "policy": "Regional expansion candidate; current country-specific e2W policy and import duty need verification.", "policyConfidence": "assumption", "policySources": [],
+      "scores": { "market": 3, "eshare": 3, "policy": 3, "competition": 3, "price": 3, "fx": 3, "entry": 3 },
+      "sources": ["S4"]
+    },
+    {
+      "name": "Nigeria", "iso": "NGA", "mapId": "566", "region": "West Africa", "verdict": "Option value; validate first",
+      "tam": { "low": 134000, "base": 340000, "high": 700000, "confidence": "sourced", "sources": ["S4", "S7"], "whyRange": "Imports, an estimated total market, and trade-data consumption are not directly comparable; low/high span the reported values." },
+      "e2wToday": { "value": null, "confidence": "assumption", "sources": [] },
+      "eShare2030": 0.05, "fitShare": 0.15, "atherShare": 0.0784, "som2030": 200, "somConfidence": "derived",
+      "policy": "EV import duty reportedly cut to zero and VAT exempt; secondary-source claims need confirmation with Nigeria Customs. Lagos okada restrictions constrain use cases.", "policyConfidence": "sourced", "policySources": ["S20", "S21"],
+      "scores": { "market": 5, "eshare": 2, "policy": 2, "competition": 3, "price": 2, "fx": 1, "entry": 2 },
+      "sources": ["S4", "S7", "S20", "S21"]
+    },
+    {
+      "name": "Ethiopia", "iso": "ETH", "mapId": "231", "region": "East Africa", "verdict": "Policy-driven option",
+      "tam": { "low": null, "base": null, "high": null, "confidence": "assumption", "sources": [], "whyRange": "No reliable two-wheeler unit sales dataset identified." },
+      "e2wToday": { "value": null, "confidence": "assumption", "sources": [] },
+      "eShare2030": null, "fitShare": null, "atherShare": null, "som2030": 200, "somConfidence": "assumption",
+      "policy": "Fossil-fuel vehicle import ban and later ICE kit restrictions are reported; Addis stopped issuing two-wheeler licences in 2019. Gig-fleet potential is a founder estimate of 150,000–200,000 units over 10–15 years.", "policyConfidence": "sourced", "policySources": ["S23", "S24", "S25"],
+      "scores": { "market": 2, "eshare": 3, "policy": 4, "competition": 3, "price": 2, "fx": 1, "entry": 1 },
+      "sources": ["S23", "S24", "S25"]
+    },
+    {
+      "name": "Ghana", "iso": "GHA", "mapId": "288", "region": "West Africa", "verdict": "Watch",
+      "tam": { "low": 83000, "base": 83000, "high": 83000, "confidence": "sourced", "sources": ["S4"], "whyRange": "2024 imports used as a proxy, not an independently verified annual sales figure." },
+      "e2wToday": { "value": null, "confidence": "assumption", "sources": [] },
+      "eShare2030": 0.05, "fitShare": 0.15, "atherShare": 0.0803, "som2030": 50, "somConfidence": "derived",
+      "policy": "No country-specific e2W policy, duty, or registration series included in this sizing.", "policyConfidence": "assumption", "policySources": [],
+      "scores": { "market": 3, "eshare": 2, "policy": 3, "competition": 3, "price": 2, "fx": 2, "entry": 3 },
+      "sources": ["S4"]
+    },
+    {
+      "name": "Morocco", "iso": "MAR", "mapId": "504", "region": "North Africa", "verdict": "Price gap is the constraint",
+      "tam": { "low": null, "base": null, "high": null, "confidence": "assumption", "sources": [], "whyRange": "Available e-moped import values do not establish total two-wheeler market size." },
+      "e2wToday": { "value": 80188, "confidence": "sourced", "sources": ["S6"], "period": "H1 2026 Chinese e-units" },
+      "e2wImportValueUSD": { "value": 21700000, "confidence": "sourced", "sources": ["S6"], "period": "H1 2026" },
+      "averageImportPriceUSD": { "value": 271, "confidence": "derived", "sources": ["S6"], "formula": "H1 import value ÷ H1 imported units." },
+      "eShare2030": null, "fitShare": 0.03, "atherShare": 0.1, "som2030": 250, "somConfidence": "assumption",
+      "policy": "Low unit import values point to a material mismatch against a premium scooter price; annualized imports are an assumption.", "policyConfidence": "derived", "policySources": ["S6"],
+      "scores": { "market": 3, "eshare": 4, "policy": 3, "competition": 3, "price": 1, "fx": 3, "entry": 2 },
+      "sources": ["S6"]
+    },
+    {
+      "name": "South Africa", "iso": "ZAF", "mapId": "710", "region": "Southern Africa", "verdict": "Selective premium test",
+      "tam": { "low": null, "base": null, "high": null, "confidence": "assumption", "sources": [], "whyRange": "Available e-moped import values do not establish total two-wheeler market size." },
+      "e2wToday": { "value": 19635, "confidence": "sourced", "sources": ["S6"], "period": "H1 2026 Chinese e-units" },
+      "e2wImportValueUSD": { "value": 6900000, "confidence": "sourced", "sources": ["S6"], "period": "H1 2026" },
+      "averageImportPriceUSD": { "value": 351, "confidence": "derived", "sources": ["S6"], "formula": "H1 import value ÷ H1 imported units." },
+      "eShare2030": null, "fitShare": 0.05, "atherShare": 0.1, "som2030": 100, "somConfidence": "assumption",
+      "policy": "Imported e-unit value is low; Ather should validate premium willingness to pay and channel economics before entry.", "policyConfidence": "derived", "policySources": ["S6"],
+      "scores": { "market": 3, "eshare": 3, "policy": 3, "competition": 3, "price": 2, "fx": 3, "entry": 2 },
+      "sources": ["S6"]
+    },
+    {
+      "name": "Egypt", "iso": "EGY", "mapId": "818", "region": "North Africa", "verdict": "Research gap",
+      "tam": { "low": null, "base": null, "high": null, "confidence": "assumption", "sources": [], "whyRange": "No unit volume data identified; market size is not estimated." },
+      "e2wToday": { "value": null, "confidence": "assumption", "sources": [] },
+      "eShare2030": null, "fitShare": null, "atherShare": null, "som2030": null, "somConfidence": "assumption",
+      "policy": "Large Chinese e-scooter importer, but no unit data found; imports are described as low-cost consumer vehicles.", "policyConfidence": "sourced", "policySources": ["S6"],
+      "scores": { "market": 1, "eshare": 2, "policy": 3, "competition": 3, "price": 1, "fx": 2, "entry": 1 },
+      "sources": ["S6"]
+    }
+  ],
+  "competitors": [
+    { "name": "Spiro", "segment": "Commercial fleet / swap", "presence": "7 markets", "priceLow": 800, "priceHigh": 1000, "confidence": "sourced", "sources": ["S1", "S5", "S8", "S9", "S14"], "note": "100,000+ bikes and 2,500+ stations reported; $100M funding in 2025, $50M in 2026 and $180M+ earlier; says petrol bikes are the real competitor." },
+    { "name": "Ampersand", "segment": "Commercial fleet / swap", "presence": "East Africa", "priceLow": null, "priceHigh": null, "confidence": "sourced", "sources": ["S12", "S13"], "note": "Battery-swapping operator; swap networks are largely closed." },
+    { "name": "Roam", "segment": "Commercial + consumer", "presence": "Kenya", "priceLow": 2240, "priceHigh": 2240, "confidence": "derived", "sources": ["S10"], "note": "Reported retail price around KSh290,000, converted at the model exchange-rate assumption." },
+    { "name": "Zembo", "segment": "Commercial fleet / swap", "presence": "Uganda", "priceLow": null, "priceHigh": null, "confidence": "sourced", "sources": ["S12", "S15"], "note": "Local electric-mobility operator." },
+    { "name": "ARC Ride", "segment": "Battery swapping", "presence": "Kenya", "priceLow": null, "priceHigh": null, "confidence": "sourced", "sources": ["S11", "S13"], "note": "Yadea partner for swapping infrastructure." },
+    { "name": "Zeno", "segment": "Commercial / emerging", "presence": "East Africa", "priceLow": null, "priceHigh": null, "confidence": "sourced", "sources": ["S12", "S15"], "note": "Emerging regional competitor." },
+    { "name": "Yadea", "segment": "Consumer + fleet", "presence": "Kenya", "priceLow": 1700, "priceHigh": 3000, "confidence": "sourced", "sources": ["S11"], "note": "Launched 5 models; top-end price reported at $3,000." },
+    { "name": "Bajaj / TVS / Honda", "segment": "Petrol incumbents", "presence": "Pan-African", "priceLow": null, "priceHigh": null, "confidence": "sourced", "sources": ["S7", "S14"], "note": "Bajaj is reported at about 36% of Nigeria unit sales; petrol bikes are the core competitive alternative." }
+  ],
+  "products": {
+    "pathA": { "name": "A · Commercial-ready", "priceLow": 800, "priceHigh": 1000, "priceConfidence": "assumption", "capitalIntensity": "High", "fit": "High-use commercial riders", "challenge": "Ather scooters are home-charged today; this path needs a swap-compatible variant or a network partner.", "sources": ["S11", "S13", "S19"] },
+    "pathB": { "name": "B · Premium consumer", "priceLow": 1700, "priceHigh": 2300, "priceConfidence": "assumption", "capitalIntensity": "Lower", "fit": "Urban premium consumers", "challenge": "Premium landed retail pricing is a model assumption; price gap is acute in low-cost import markets.", "sources": ["S6", "S10", "S11"] },
+    "atherPriceInr": 108156,
+    "atherPriceRizta450Inr": 119999,
+    "atherPriceConfidence": "sourced",
+    "atherPriceSources": ["S29"],
+    "rivalPriceAnchor": [
+      { "name": "Spiro", "low": 800, "high": 1000, "source": "S14" },
+      { "name": "Roam", "low": 2240, "high": 2240, "source": "S10" },
+      { "name": "Yadea", "low": 1700, "high": 3000, "source": "S11" }
+    ]
+  },
+  "costModel": {
+    "currency": "USD",
+    "usdInr": 90,
+    "atherPriceInr": 108156,
+    "containerRate40ft": 2400,
+    "unitsCbu": 50,
+    "unitsSkd": 120,
+    "unitsCkd": 250,
+    "cbuLogisticsLow": 150,
+    "cbuLogisticsHigh": 200,
+    "otherLogisticsCbu": 127,
+    "ckdLogisticsLow": 40,
+    "ckdLogisticsHigh": 60,
+    "dutyCbu": 0.25,
+    "dutyCkd": 0.1,
+    "distributorMargin": 0.12,
+    "dealerMargin": 0.1,
+    "insurancePortInland": 80,
+    "annualFixedAssembly": 1300000,
+    "revenuePerUnit": 1400,
+    "exchangeConfidence": "assumption",
+    "dutySources": ["S26"],
+    "freightSources": ["S27", "S28"],
+    "caveats": [
+      "India ex-showroom price is used as an ex-factory proxy; this likely overstates export cost.",
+      "The current country-specific import duty and EAC remission eligibility need confirmation.",
+      "Container loading counts, assembly-line cost, and all-in logistics ranges are modelling assumptions."
+    ]
+  },
+  "riderEconomics": {
+    "petrolPerDayKes": 1000,
+    "electricPerDayKes": 250,
+    "earningsLowKes": 1500,
+    "earningsHighKes": 2250,
+    "swapsPerDay": 2,
+    "rangeKmPerBattery": 80,
+    "priceKes": 290000,
+    "kesPerUsd": 129.4,
+    "kesUsdDerivation": { "kes": 388320, "usd": 3000 },
+    "sources": ["S10", "S11", "S19"],
+    "priceAssumption": "Vehicle price uses Roam's reported retail anchor; actual purchase terms and financing are unverified."
+  },
+  "atherInternationalExperience": [
+    { "market": "Nepal", "timing": "November 2023", "route": "Market entry", "sources": ["S32"] },
+    { "market": "Sri Lanka", "timing": "December 2024", "route": "Distributor: Evolution Auto", "sources": ["S31"] },
+    { "market": "Sri Lanka", "timing": "November 2025", "route": "40 Experience Centres", "sources": ["S31"] }
+  ],
+  "shipping": { "transitLowDays": 8, "transitHighDays": 12, "transitTransshipDays": 20, "sources": ["S28"] },
+  "supplyChain": {
+    "status": "User-supplied working hypothesis; not independently verified. Confirm process ownership, supplier geography, ERP / factory systems, routes and service-parts footprint with Ather before external or investment use.",
+    "flow": [
+      { "stage": "01", "title": "Tier-1 + global sourcing", "subtitle": "India auto hubs · APAC cell / electronics suppliers", "details": "Chassis, body, brakes, tyres and suspension; battery cells, electronics and motor materials.", "category": "inbound", "confidence": "assumption" },
+      { "stage": "02", "title": "Hosur manufacturing", "subtitle": "Battery packs · BMS · vehicle assembly", "details": "Core electronics / pack assembly and vehicle manufacturing; validate plant-level process map.", "category": "factory", "confidence": "assumption" },
+      { "stage": "03", "title": "Quality + dispatch", "subtitle": "Factory QA · export preparation", "details": "Quality release, export configuration, spares allocation and shipment documentation.", "category": "factory", "confidence": "assumption" },
+      { "stage": "04", "title": "Ocean freight", "subtitle": "India → Mombasa / Dar es Salaam", "details": "Freight, customs clearance, port handling and inland delivery; lane transit is a separately sourced estimate.", "category": "logistics", "confidence": "assumption" },
+      { "stage": "05", "title": "Country channel", "subtitle": "Distributor · Experience Centre · dealer", "details": "CBU pilot through local partner; service training, homologation, warranty and registration.", "category": "market", "confidence": "assumption" },
+      { "stage": "06", "title": "Rider + lifecycle support", "subtitle": "Vehicle · service parts · charging", "details": "Customer delivery, regional service-parts availability, service centres and charging / swap-partner interfaces.", "category": "market", "confidence": "assumption" }
+    ],
+    "supportFlows": [
+      { "title": "Supplier risk controls", "details": "Diversification, local backups and redesign options; verify supplier strategy and localization readiness." },
+      { "title": "Information systems", "details": "ERP / SAP, IoT and quality-gate visibility are proposed data integration points; verify actual platforms, access and event coverage." },
+      { "title": "Charging infrastructure", "details": "Ather Grid is a distinct infrastructure workstream; map equipment logistics and partner responsibilities for Africa." },
+      { "title": "Reverse logistics", "details": "Warranty returns, batteries, repair loops and end-of-life handling require country-specific process and compliance design." }
+    ],
+    "africaAssemblyGate": "Consider contract SKD / CKD assembly only after verified annual demand exceeds ~4–5k in one country or a confirmed policy requirement changes the economics."
+  },
+  "roadmap": [
+    { "phase": "00", "name": "Prove the channel", "timing": "0–12 months", "mode": "Distributor-led CBU pilot · Kenya (Sri Lanka playbook)", "gate": "Proceed only after duty, homologation, warranty and channel economics are confirmed.", "costRange": "$0.5–1.5M", "costConfidence": "assumption", "durationConfidence": "assumption", "sources": ["S31"] },
+    { "phase": "01", "name": "Expand selectively", "timing": "12–24 months", "mode": "EAC expansion · Uganda, Rwanda, Tanzania", "gate": "Scale country by country against adoption, service and contribution-margin evidence.", "costRange": "$1–3M", "costConfidence": "assumption", "durationConfidence": "assumption", "sources": ["S2", "S22"] },
+    { "phase": "02", "name": "Localize by contract", "timing": "24–36 months", "mode": "Contract SKD / CKD assembly", "gate": "One country exceeds ~4–5k annual units, or verified policy makes assembly necessary.", "costRange": "$5–15M", "costConfidence": "assumption", "durationConfidence": "assumption", "sources": ["S26"] },
+    { "phase": "03", "name": "Build only at scale", "timing": "After volume gate", "mode": "Own African plant · Path A + swap partner", "gate": "Require durable demand, service economics and interoperable or partnered swap access.", "costRange": "Not estimated", "costConfidence": "assumption", "durationConfidence": "assumption", "sources": ["S11", "S13"] }
+  ],
+  "risks": [
+    { "risk": "FX & repatriation", "exposure": "High", "mitigation": "Stress-test naira, birr and shilling exposure; use hard-currency budgets and refresh FX triggers before each order.", "sourceIds": ["S7", "S23"] },
+    { "risk": "Policy reversal", "exposure": "High", "mitigation": "Model tax upside as optional; confirm Kenya Finance Act status and country tariff schedules.", "sourceIds": ["S16", "S17", "S18", "S20"] },
+    { "risk": "Swap-network lock-in", "exposure": "High", "mitigation": "Partner before committing to a commercial battery architecture; verify compatibility in writing.", "sourceIds": ["S11", "S13"] },
+    { "risk": "Rider financing", "exposure": "High", "mitigation": "Test lease / asset-finance partners and total cost of ownership with commercial riders.", "sourceIds": ["S19"] },
+    { "risk": "Product / price fit", "exposure": "High", "mitigation": "Run a paid pilot; do not assume premium demand from broad e2W growth.", "sourceIds": ["S6", "S10", "S11"] },
+    { "risk": "Data quality", "exposure": "High", "mitigation": "Reconcile registrations, imports and sales before scaling; keep country TAM ranges visible.", "sourceIds": ["S3", "S4", "S7"] },
+    { "risk": "Freight volatility", "exposure": "Medium", "mitigation": "Refresh quotes and test landed-cost sensitivity before pilot purchase orders.", "sourceIds": ["S27", "S28"] }
+  ],
+  "verificationItems": [
+    "Import duty on e-motorcycles (HS 8711.60) and CKD kits, country by country.",
+    "Current USD/INR and a fresh India–East Africa container rate.",
+    "Kenyan and Nigerian registration data (KNBS/KRA, NBS); reported sources conflict.",
+    "Egypt, Rwanda and Ethiopia two-wheeler unit volumes.",
+    "Packing counts per container and assembly-line fixed-cost assumptions.",
+    "Nigeria duty and VAT status with Nigeria Customs; S20 is a secondary source.",
+    "Refresh S27 freight quote; source is undated.",
+    "Confirm current EAC CKD remission terms; S26 dates to 2020."
+  ],
+  "recommendation": {
+    "title": "Approve a gated Kenya export pilot. Do not approve African manufacturing yet.",
+    "summary": "Use export-led CBU entry to learn about premium willingness to pay, product-market fit, after-sales needs and channel economics. Treat East Africa as the near-term learning cluster; treat continental volume and assembly as conditional options.",
+    "gates": [
+      { "number": "01", "title": "Market proof", "text": "Named distributor, rider interviews and a paid pilot cohort; validate premium conversion against petrol alternatives." },
+      { "number": "02", "title": "Unit economics", "text": "Customs-confirmed duty, refreshed freight, warranty/service cost and positive contribution margin at realized price." },
+      { "number": "03", "title": "Scale trigger", "text": "Repeatable demand supports ≥4–5k annual units in one country before contract assembly is evaluated." }
+    ],
+    "decision": "Leadership decision requested: authorize a time-boxed Kenya CBU pilot and diligence budget; defer assembly-capex approval."
+  },
+  "confidenceLabels": {
+    "sourced": "Sourced",
+    "derived": "Derived",
+    "assumption": "Assumption"
+  }
+}
