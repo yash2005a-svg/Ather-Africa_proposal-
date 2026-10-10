@@ -95,6 +95,15 @@ function compact(value: number) {
   return integer(value);
 }
 
+function marketRangeLabel(
+  low: number | null,
+  base: number | null,
+  high: number | null
+): string {
+  if (base === null) return "Data gap";
+  return `${compact(low ?? base)}–${compact(high ?? base)}`;
+}
+
 function Confidence({ level }: { level: ConfidenceName }) {
   return <span className={`confidence confidence-${level}`}>{data.confidenceLabels[level]}</span>;
 }
@@ -366,11 +375,7 @@ function CountryExplorer() {
           <div className="country-stat-grid">
             <div>
               <span className="stat-label">Two-wheeler TAM · annual</span>
-              {tam.base === null ? (
-                <strong>Data gap</strong>
-              ) : (
-                <strong>{compact(tam.low ?? tam.base)}–{compact(tam.high ?? tam.base)}</strong>
-              )}
+              <strong>{marketRangeLabel(tam.low, tam.base, tam.high)}</strong>
               <DataTag
                 level={confidenceLevel(tam.confidence)}
                 sources={tam.sources}
