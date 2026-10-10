@@ -71,6 +71,11 @@ const initialWeights: Record<WeightId, number> = data.countryRankingWeights;
 
 const sourceById = new Map(sources.map((source) => [source.id, source]));
 
+function confidenceLevel(value: string): ConfidenceName {
+  if (value === "sourced" || value === "derived" || value === "assumption") return value;
+  throw new Error(`Unsupported confidence label in data: ${value}`);
+}
+
 function money(value: number, decimals = 0) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -357,7 +362,7 @@ function CountryExplorer() {
           </div>
           <h3>{selected.name}</h3>
           <p className="profile-policy">{selected.policy}</p>
-          <DataTag level={selected.policyConfidence} sources={selected.policySources} />
+          <DataTag level={confidenceLevel(selected.policyConfidence)} sources={selected.policySources} />
           <div className="country-stat-grid">
             <div>
               <span className="stat-label">Two-wheeler TAM · annual</span>
@@ -367,7 +372,7 @@ function CountryExplorer() {
                 <strong>{compact(tam.low ?? tam.base)}–{compact(tam.high ?? tam.base)}</strong>
               )}
               <DataTag
-                level={tam.confidence}
+                level={confidenceLevel(tam.confidence)}
                 sources={tam.sources}
                 formula={tam.whyRange}
                 formulaLabel="Why this range?"
@@ -377,8 +382,8 @@ function CountryExplorer() {
               <span className="stat-label">e2W today</span>
               <strong>{selected.e2wToday.value === null ? "Not available" : compact(selected.e2wToday.value)}</strong>
               {"period" in selected.e2wToday ? <small className="stat-period">{selected.e2wToday.period}</small> : null}
-              <DataTag level={selected.e2wToday.confidence} sources={selected.e2wToday.sources} />
-              {kenyaEShare ? <span className="stat-extra">2024 e-share · {(kenyaEShare.value * 100).toFixed(1)}% <DataTag level={kenyaEShare.confidence} sources={kenyaEShare.sources} /></span> : null}
+              <DataTag level={confidenceLevel(selected.e2wToday.confidence)} sources={selected.e2wToday.sources} />
+              {kenyaEShare ? <span className="stat-extra">2024 e-share · {(kenyaEShare.value * 100).toFixed(1)}% <DataTag level={confidenceLevel(kenyaEShare.confidence)} sources={kenyaEShare.sources} /></span> : null}
             </div>
             <div>
               <span className="stat-label">SAM · {data.modelYear} units / yr</span>
@@ -393,7 +398,7 @@ function CountryExplorer() {
               <span className="stat-label">{data.modelYear} SOM · units / yr</span>
               <strong>{selected.som2030 === null ? "Not sized" : `~${integer(selected.som2030)}`}</strong>
               <DataTag
-                level={selected.somConfidence}
+                level={confidenceLevel(selected.somConfidence)}
                 sources={selected.sources}
                 formula={sam2030 === null ? "Placeholder pending comparable country market-size and adoption data." : "SOM = SAM × Ather share of SAM; rounded to the base-case planning figure shown."}
               />
@@ -403,7 +408,7 @@ function CountryExplorer() {
             <div className="import-price-note">
               <span>Indicative low-cost e2W import anchor</span>
               <strong>{money(importPrice.value)} / unit</strong>
-              <DataTag level={importPrice.confidence} sources={importPrice.sources} formula={importPrice.formula} />
+              <DataTag level={confidenceLevel(importPrice.confidence)} sources={importPrice.sources} formula={importPrice.formula} />
             </div>
           ) : null}
           <p className="muted-note">Base-case SOM is a model output, not a sales forecast. Country values include explicit placeholders where market evidence is missing.</p>
@@ -508,7 +513,7 @@ function ProductFork() {
           const dimmed = focus !== "compare" && focus !== key;
           return (
             <Card className={`product-card ${key === "pathB" ? "featured-path" : ""} ${highlighted ? "path-highlight" : ""} ${dimmed ? "path-dimmed" : ""}`} key={key}>
-              <div className="product-card-top"><span className="eyebrow">{path.name}</span><DataTag level={path.priceConfidence} sources={path.sources} /></div>
+              <div className="product-card-top"><span className="eyebrow">{path.name}</span><DataTag level={confidenceLevel(path.priceConfidence)} sources={path.sources} /></div>
               <div className="product-price">{money(path.priceLow)}<span>–</span>{money(path.priceHigh)}<small>target retail band · USD</small></div>
               <div className="product-meta"><span>Capital intensity</span><b>{path.capitalIntensity}</b></div>
               <div className="product-meta"><span>Target rider</span><b>{path.fit}</b></div>
@@ -773,7 +778,7 @@ export default function StrategyDashboard() {
             <h3>Capacity is not the constraint.<br /><em>Proof of product-market fit is.</em></h3>
             <p>Africa’s e2W transition is real, but today’s addressable market is concentrated in high-utilization, price-sensitive commercial fleets with closed swap ecosystems. Ather should learn through a disciplined export pilot before committing manufacturing capital. Current e2W sales are about <strong>{((data.headline.marketUnits2025.value / data.headline.motorcyclesUnits2024.value) * 100).toFixed(1)}%</strong> of the annual motorcycle market.</p>
             <div className="thesis-foot">
-              <div className="thesis-foot-item"><span>Base-case revenue · {data.modelYear}</span><b>${compact(data.headline.annualBaseRevenueUSD.low)}–${compact(data.headline.annualBaseRevenueUSD.high)} / yr</b><Confidence level={data.headline.annualBaseRevenueUSD.confidence} /></div>
+              <div className="thesis-foot-item"><span>Base-case revenue · {data.modelYear}</span><b>${compact(data.headline.annualBaseRevenueUSD.low)}–${compact(data.headline.annualBaseRevenueUSD.high)} / yr</b><Confidence level={confidenceLevel(data.headline.annualBaseRevenueUSD.confidence)} /></div>
               <div className="thesis-foot-item"><span>Decision posture</span><b>Option value · gated investment</b></div>
               <DataTag level="derived" sources={[...data.headline.marketUnits2025.sources, ...data.headline.motorcyclesUnits2024.sources]} formula="2025 e2W sales ÷ 2024 motorcycle and scooter sales. Years differ; treat this as an approximate market-share indicator." />
             </div>
@@ -1092,7 +1097,7 @@ function CompetitorLandscape() {
           <div className="competitor-table-head"><span>Operator / brand</span><span>Focus</span><span>Presence</span><span>Indicative USD</span></div>
           {items.map((item) => (
             <div className="competitor-table-row" key={item.name}>
-              <div><strong>{item.name}</strong><small>{item.note}</small><DataTag level={item.confidence} sources={item.sources} /></div>
+              <div><strong>{item.name}</strong><small>{item.note}</small><DataTag level={confidenceLevel(item.confidence)} sources={item.sources} /></div>
               <span>{item.segment}</span><span>{item.presence}</span>
               <strong>{item.priceLow === null ? "—" : `${money(item.priceLow)}${item.priceHigh !== item.priceLow ? `–${money(item.priceHigh)}` : ""}`}</strong>
             </div>
@@ -1112,10 +1117,10 @@ function Roadmap() {
         <article className="roadmap-phase" key={phase.phase}>
           <div className="phase-marker"><span>{phase.phase}</span></div>
           <Card className={`phase-card ${index === 0 ? "phase-current" : ""}`}>
-            <div className="phase-card-top"><span className="eyebrow">{phase.timing}</span><span className="phase-cost"><Confidence level={phase.costConfidence} /> {phase.costRange}</span></div>
+            <div className="phase-card-top"><span className="eyebrow">{phase.timing}</span><span className="phase-cost"><Confidence level={confidenceLevel(phase.costConfidence)} /> {phase.costRange}</span></div>
             <h3>{phase.name}</h3><p className="phase-mode">{phase.mode}</p>
             <div className="phase-gate"><span>GO / NO-GO GATE</span><p>{phase.gate}</p></div>
-            <DataTag level={phase.durationConfidence} sources={phase.sources} formula="Planning range only; timing and cost require bottom-up validation." />
+            <DataTag level={confidenceLevel(phase.durationConfidence)} sources={phase.sources} formula="Planning range only; timing and cost require bottom-up validation." />
           </Card>
         </article>
       ))}
@@ -1198,7 +1203,7 @@ function SupplyChainFlow() {
                 <h4>{stage.title}</h4>
                 <span className="supply-stage-subtitle">{stage.subtitle}</span>
                 <p>{stage.details}</p>
-                <Confidence level={stage.confidence} />
+                <Confidence level={confidenceLevel(stage.confidence)} />
               </article>
               {index < data.supplyChain.flow.length - 1 ? <span className="supply-arrow" aria-hidden="true">→</span> : null}
             </div>
