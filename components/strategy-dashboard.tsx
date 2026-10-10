@@ -1233,7 +1233,7 @@ function SupplyChainFlow() {
           <p><b>Hosur:</b> confirm plant scope, capacity allocation, quality gates, export readiness, traceability and actual systems available for data access.</p>
           <p><b>Export route:</b> obtain current shipment quote, HS classification, country duty, homologation, port-to-dealer time and Incoterms.</p>
           <p><b>Country operations:</b> identify importer of record, distributor, warranty obligations, service locations, spare stock and returns process.</p>
-          <p><b>Charging:</b> distinguish Ather Grid's current India network from any proposed Africa deployment or local partner arrangement.</p>
+          <p><b>Charging:</b> distinguish Ather Grid&apos;s current India network from any proposed Africa deployment or local partner arrangement.</p>
           <p><b>Reverse flow:</b> map warranty returns, battery transport, repair / refurbishment and country rules for used cells and end-of-life packs.</p>
         </div>
       </Card>
